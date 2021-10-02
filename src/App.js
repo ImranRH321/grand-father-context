@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext, useState } from 'react';
+import './App.css'
+import GrandFather from './componets/GrandFather/GrandFather'
 
-function App() {
+
+export const RingContext = createContext('ring')
+
+const App = () => {
+  const [house, setHouse] = useState(2)
+  const ornaments = 'sonar daimon ring'
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RingContext.Provider value={[ornaments,house]}>
+      <div className="App">
+        <button onClick={() => setHouse(house + 1)}>by new button</button>
+        <GrandFather house={house} ></GrandFather>
+      </div>
+    </RingContext.Provider>
+
   );
-}
+};
 
 export default App;
